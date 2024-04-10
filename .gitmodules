@@ -1,3 +1,6 @@
 [submodule "modules/se2a-fdm-lib"]
 	path = modules/se2a-fdm-lib
 	url = https://github.com/se2a-gla/se2a-fdm-lib
+[submodule "modules/matlab2tikz"]
+	path = modules/matlab2tikz
+	url = https://github.com/matlab2tikz/matlab2tikz
