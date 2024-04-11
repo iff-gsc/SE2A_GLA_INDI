@@ -1,0 +1,8 @@
+*.mexw64
+*.original
+*.autosave
+*.asv
+*.slxc
+*slprj
+
+/results_export
