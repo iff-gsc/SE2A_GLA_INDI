@@ -1,6 +1,6 @@
 clear all;
 
-addPath();
+is_tigl_installed = addPath();
 
 is_tikz_export_desired = false;
 
@@ -10,7 +10,12 @@ fp_spec.EAS         = 177; % m/s
 
 [Ma,V,atm] = altEas2MaTas( fp_spec.Altitude, fp_spec.EAS );
 
-[aircraft,structure] = aircraftSe2aCreate( 'flexible', true, 'Mach', Ma, 'pchfilename', 'na_Se2A-MR-Ref-v4-twist_GFEM_MTOAa_S103_DMIG.pch', 'AdjustJigTwist', true );
+if is_tigl_installed
+    [aircraft,structure] = aircraftSe2aCreate( 'flexible', true, 'Mach', Ma, 'pchfilename', 'na_Se2A-MR-Ref-v4-twist_GFEM_MTOAa_S103_DMIG.pch', 'AdjustJigTwist', true );
+else
+    load('data/aircraft_structure.mat');
+    wingSetCustomActuatorPath(aircraft.wing_main);
+end
 
 %% Plot control effectiveness
 gla_indi = glaIndiCreate( aircraft, fp_spec, ...

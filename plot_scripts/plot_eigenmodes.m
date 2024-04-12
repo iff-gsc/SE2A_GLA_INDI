@@ -1,6 +1,6 @@
 clear all;
 
-addPath();
+is_tigl_installed = addPath();
 
 is_tikz_export_desired = false;
 

@@ -78,7 +78,7 @@ Figure | Filename
 28 | `plot_gust_response_failure.m` 
 
 
-The plot scripts mostly consist of an initialization of the parameters with trim calculation, a simulation, the creation of the figures and the export to a TikZ file.
+The plot scripts mostly consist of an initialization of the parameters with trim calculation, simulations, the creation of the figures and the export to a TikZ file.
 The export to a TikZ file is deactivated by default and can be activated by setting: `is_tikz_export_desired = true`.
 The trim calculation takes quite a long time.
 Since the same trim point is often used in different plot scripts, you can often skip the initialization with trim calculation after it has been executed for the first time.

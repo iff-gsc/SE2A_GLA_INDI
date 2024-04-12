@@ -1,5 +1,5 @@
 % add folders to path
-addPath();
+is_tigl_installed = addPath();
 
 is_tikz_export_desired = false;
 
@@ -16,8 +16,14 @@ grid_foldername = 'GRID_SE2A_MR_BWD_swept_V4_twist';
 i = 3;
 
 pch_filename = pch_filenames{i};
-[aircraft,structure] = aircraftSe2aCreate( 'flexible', true, 'unsteady', true, 'stall', true, 'Mach', 0.76, ...
-    'pchfilename',pch_filename,'gridfoldername',grid_foldername);
+
+if is_tigl_installed
+    [aircraft,structure] = aircraftSe2aCreate( 'flexible', true, 'unsteady', true, 'stall', false, 'Mach', 0.76, ...
+        'pchfilename', pch_filename, 'gridfoldername', grid_foldername );
+else
+    load('data/aircraft_structure.mat');
+    wingSetCustomActuatorPath(aircraft.wing_main);
+end
 
 %% Plot mass distribution
 figure
